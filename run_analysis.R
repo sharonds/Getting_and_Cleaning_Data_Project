@@ -55,12 +55,12 @@ data.final <- as.data.frame(data.final)
 colnames(data.final) <- colnames(dataSet)
 row <- 1
 for(i in 1:subjectLen) {
-  for(j in 1:activityLen) {
+  for(ii in 1:activityLen) {
     data.final[row, 1] <- sort(unique(merged.Subject)[, 1])[i]
-    data.final[row, 2] <- activity[j, 2]
-    bool1 <- i == dataSet$subject
-    bool2 <- activity[j, 2] == dataSet$activity
-    data.final[row, 3:columnLen] <- colMeans(dataSet[bool1&bool2, 3:columnLen])
+    data.final[row, 2] <- activity[ii, 2]
+    a <- i == dataSet$subject
+    b <- activity[ii, 2] == dataSet$activity
+    data.final[row, 3:columnLen] <- colMeans(dataSet[a&b, 3:columnLen])
     row <- row + 1
   }
 }
